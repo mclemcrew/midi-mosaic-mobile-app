@@ -1,0 +1,24 @@
+<ion-list padding>
+    <button ion-button block (click)="write()">Write</button>
+    <h2>{{dataSent}}</h2>
+    <button ion-button block (click)="read()">Read</button>
+    <h2>{{dataReceived}}</h2>
+    <h4>Address: {{address}}</h4>
+  <button ion-button block (click)="startScanning()">scan</button>
+  <ion-list-header>
+    Paired Devices
+  </ion-list-header>
+  <ion-item *ngFor="let device of pairedDevices">
+    {{device.name}}
+  </ion-item>
+  <button ion-button block (click)="disconnect()">Disconnect</button>
+  <ion-list-header>
+    availlable Devices
+  </ion-list-header>
+  <ion-item *ngFor='let device of unpairedDevices'>
+    <span (click)="selectDevice(device.address)">
+      {{device.name}}
+    </span>
+  </ion-item>
+  <ion-spinner name="crescent" *ngIf="gettingDevices"></ion-spinner>
+</ion-list>

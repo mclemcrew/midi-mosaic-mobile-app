@@ -1,0 +1,4 @@
+#Fri Apr 27 19:40:15 CDT 2018
+base.0=/Users/mclem/Desktop/Bluetooth-test/bluetoothDemo/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
+renamed.0=classes.dex
+file.0=/Users/mclem/Desktop/Bluetooth-test/bluetoothDemo/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0/classes.dex
