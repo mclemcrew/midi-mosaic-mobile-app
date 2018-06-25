@@ -1,4 +1,6 @@
+<ion-content overflow-scroll="true">
 <ion-list padding>
+    <button ion-button block (click)="moveToDemoPage()">Move Pages</button>
     <button ion-button block (click)="write()">Write</button>
     <h2>{{dataSent}}</h2>
     <button ion-button block (click)="read()">Read</button>
@@ -13,7 +15,7 @@
   </ion-item>
   <button ion-button block (click)="disconnect()">Disconnect</button>
   <ion-list-header>
-    availlable Devices
+    Available Devices
   </ion-list-header>
   <ion-item *ngFor='let device of unpairedDevices'>
     <span (click)="selectDevice(device.address)">
@@ -22,3 +24,4 @@
   </ion-item>
   <ion-spinner name="crescent" *ngIf="gettingDevices"></ion-spinner>
 </ion-list>
+</ion-content>

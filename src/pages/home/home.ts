@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 import { AlertController } from 'ionic-angular';
+import { ColorPickerPage } from '../color-picker/color-picker';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -14,16 +16,20 @@ export class HomePage {
   dataSent = 'null';
   dataReceived;
   address: any;
-  constructor(private bluetoothSerial: BluetoothSerial, private alertCtrl: AlertController) {
+  constructor(private bluetoothSerial: BluetoothSerial, private alertCtrl: AlertController, private navController: NavController ) {
     bluetoothSerial.enable();
   }
 
+  moveToDemoPage() {
+    this.navController.push(ColorPickerPage);
+  }
+
   write() {
-    this.bluetoothSerial.write('hello world').then(()=> {this.dataSent='yes'},()=> {this.dataSent='yes'});
+    this.bluetoothSerial.write('hello world').then(()=> {this.dataSent='yes'},()=> {this.dataSent='no'});
   }
 
   read() {
-    this.dataReceived = this.bluetoothSerial.read().then((data)=> {this.dataSent=data},()=> {this.dataSent='yes'});
+    this.dataReceived = this.bluetoothSerial.read().then((data)=> {this.dataSent=data},()=> {this.dataSent='no'});
   }
 
   startScanning() {

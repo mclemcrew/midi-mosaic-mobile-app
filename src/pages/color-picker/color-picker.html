@@ -1,0 +1,29 @@
+<!--
+  Generated template for the ColorPickerPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>ColorPicker</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div class="center-color-picker">
+        <span 
+         [cpToggle]="'true'"
+         [style.background]="color"
+         [cpAlphaChannel]="'always'"
+         [cpOutputFormat]="'rgba'"
+         [cpDialogDisplay]="'inline'"
+         [cpPresetColors]="['#2889e9']"
+         [cpAddColorButton]="true"
+         [(colorPicker)]="color"
+         [cpPosition] = "'top'"></span>
+      </div>
+</ion-content>
