@@ -1,4 +1,4 @@
-#Tue May 01 20:39:18 CDT 2018
+#Tue Jun 26 18:56:35 CDT 2018
 base.0=/Users/mclem/Desktop/MidiMosaicMobileApp/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
 renamed.0=classes.dex
 file.0=/Users/mclem/Desktop/MidiMosaicMobileApp/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0/classes.dex

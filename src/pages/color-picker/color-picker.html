@@ -7,23 +7,13 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>ColorPicker</ion-title>
+    <ion-title>color-picker</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-    <div class="center-color-picker">
-        <span 
-         [cpToggle]="'true'"
-         [style.background]="color"
-         [cpAlphaChannel]="'always'"
-         [cpOutputFormat]="'rgba'"
-         [cpDialogDisplay]="'inline'"
-         [cpPresetColors]="['#2889e9']"
-         [cpAddColorButton]="true"
-         [(colorPicker)]="color"
-         [cpPosition] = "'top'"></span>
-      </div>
+    <button ion-button block (click)="write()">Write</button>
+    <button ion-button block (click)="disconnect()">Disconnect</button>
 </ion-content>
