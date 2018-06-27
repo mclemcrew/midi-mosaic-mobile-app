@@ -1,6 +1,111 @@
 webpackJsonp([1],{
 
-/***/ 110:
+/***/ 101:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ColorPickerPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_bluetooth_serial__ = __webpack_require__(77);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+/**
+ * Generated class for the ColorPickerPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var ColorPickerPage = /** @class */ (function () {
+    function ColorPickerPage(bluetoothSerial, alertCtrl, navCtrl, navParams) {
+        this.bluetoothSerial = bluetoothSerial;
+        this.alertCtrl = alertCtrl;
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.labelForNumberInput = "Box Number: ";
+        this.controlOfLEDs = 'b';
+        this.color = "255,0,0";
+        this.redValue = "255";
+        this.greenValue = "95";
+        this.blueValue = "0";
+        //this.comboColor = this.redValue+","+this.greenValue+","+this.blueValue;
+        this.colorCombo = "rgb(" + this.redValue + "," + this.greenValue + "," + this.blueValue + ")";
+    }
+    ColorPickerPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad ColorPickerPage');
+    };
+    ColorPickerPage.prototype.colorChanged = function () {
+        this.colorCombo = "rgb(" + this.redValue + "," + this.greenValue + "," + this.blueValue + ")";
+    };
+    ColorPickerPage.prototype.write = function () {
+        var _this = this;
+        this.bluetoothSerial.write('hello world').then(function () { _this.dataSent = 'yes'; }, function () { _this.dataSent = 'no'; });
+    };
+    ColorPickerPage.prototype.presentPrompt = function () {
+        var alert = this.alertCtrl.create({
+            title: 'Login',
+            inputs: [
+                {
+                    name: 'username',
+                    placeholder: 'Username'
+                },
+                {
+                    name: 'password',
+                    placeholder: 'Password',
+                    type: 'password'
+                }
+            ],
+            buttons: [
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    handler: function (data) {
+                        console.log('Cancel clicked');
+                    }
+                },
+                {
+                    text: 'Save',
+                    handler: function (data) {
+                        if (true) {
+                            // logged in!
+                            console.log(true);
+                        }
+                        else {
+                            // invalid login
+                            return false;
+                        }
+                    }
+                }
+            ]
+        });
+        alert.present();
+    };
+    ColorPickerPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
+            selector: 'page-color-picker',template:/*ion-inline-start:"C:\Users\mclemens\Desktop\Mobile-App-MM\midimosaicmobileapp\src\pages\color-picker\color-picker.html"*/'<!--\n\n  Generated template for the ColorPickerPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n\n\n  <ion-navbar>\n\n    <ion-title>ColorPicker</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content>\n\n  <div class="color-blob" [ngStyle]="{backgroundColor: colorCombo}">\n\n    <div >\n\n        <button (click)="write()" ion-button full style="background: rgb(0,0,0,0); box-shadow: 0 0 0 #000000; -webkit-box-shadow: 0 0 0 #000000;">Full Button</button>\n\n    </div>\n\n  </div>\n\n  <div style="position: fixed;bottom: 8px;left:0px;right:0px;">\n\n      <ion-item>\n\n          <ion-label>Breadth of Control</ion-label>\n\n          <ion-select [(ngModel)]="controlOfLEDs">\n\n            <ion-option value="b">Box</ion-option>\n\n            <ion-option value="r">Row</ion-option>\n\n            <ion-option value="c">Column</ion-option>\n\n            <ion-option value="a">All</ion-option>\n\n          </ion-select>\n\n        </ion-item>\n\n        <div style="padding: 0px 15px;">\n\n            <ion-range min="0" max="255" (ionChange)="colorChanged($event)" [(ngModel)]="redValue" color="danger" pin="true"></ion-range>\n\n            <ion-range min="0" max="255" (ionChange)="colorChanged($event)" [(ngModel)]="greenValue" color="secondary" pin="true"></ion-range>\n\n            <ion-range min="0" max="255" (ionChange)="colorChanged($event)" [(ngModel)]="blueValue" color="primary" pin="true"></ion-range>\n\n            <button ion-button block [ngStyle]="{backgroundColor: colorCombo}">Send Color</button>\n\n        </div>\n\n  </div>\n\n</ion-content>\n\n'/*ion-inline-end:"C:\Users\mclemens\Desktop\Mobile-App-MM\midimosaicmobileapp\src\pages\color-picker\color-picker.html"*/,
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_bluetooth_serial__["a" /* BluetoothSerial */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_bluetooth_serial__["a" /* BluetoothSerial */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _d || Object])
+    ], ColorPickerPage);
+    return ColorPickerPage;
+    var _a, _b, _c, _d;
+}());
+
+//# sourceMappingURL=color-picker.js.map
+
+/***/ }),
+
+/***/ 111:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -13,36 +118,28 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 110;
+webpackEmptyAsyncContext.id = 111;
 
 /***/ }),
 
-/***/ 151:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ 152:
+/***/ (function(module, exports) {
 
-var map = {
-	"../pages/color-picker/color-picker.module": [
-		271,
-		0
-	]
-};
-function webpackAsyncContext(req) {
-	var ids = map[req];
-	if(!ids)
-		return Promise.reject(new Error("Cannot find module '" + req + "'."));
-	return __webpack_require__.e(ids[1]).then(function() {
-		return __webpack_require__(ids[0]);
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncatched exception popping up in devtools
+	return Promise.resolve().then(function() {
+		throw new Error("Cannot find module '" + req + "'.");
 	});
-};
-webpackAsyncContext.keys = function webpackAsyncContextKeys() {
-	return Object.keys(map);
-};
-webpackAsyncContext.id = 151;
-module.exports = webpackAsyncContext;
+}
+webpackEmptyAsyncContext.keys = function() { return []; };
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+module.exports = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = 152;
 
 /***/ }),
 
-/***/ 194:
+/***/ 195:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -50,7 +147,7 @@ module.exports = webpackAsyncContext;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_bluetooth_serial__ = __webpack_require__(77);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__color_picker_color_picker__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__color_picker_color_picker__ = __webpack_require__(101);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -154,96 +251,15 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/mclem/Desktop/MidiMosaicMobileApp/src/pages/home/home.html"*/'<ion-content overflow-scroll="true">\n<ion-list padding>\n    <button ion-button block (click)="moveToDemoPage()">Move Pages</button>\n    <button ion-button block (click)="write()">Write</button>\n    <h2>{{dataSent}}</h2>\n    <button ion-button block (click)="read()">Read</button>\n    <h2>{{dataReceived}}</h2>\n    <h4>Address: {{address}}</h4>\n  <button ion-button block (click)="startScanning()">scan</button>\n  <ion-list-header>\n    Paired Devices\n  </ion-list-header>\n  <ion-item *ngFor="let device of pairedDevices">\n    {{device.name}}\n  </ion-item>\n  <button ion-button block (click)="disconnect()">Disconnect</button>\n  <ion-list-header>\n    Available Devices\n  </ion-list-header>\n  <ion-item *ngFor=\'let device of unpairedDevices\'>\n    <span (click)="selectDevice(device.address)">\n      {{device.name}}\n    </span>\n  </ion-item>\n  <ion-spinner name="crescent" *ngIf="gettingDevices"></ion-spinner>\n</ion-list>\n</ion-content>'/*ion-inline-end:"/Users/mclem/Desktop/MidiMosaicMobileApp/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"C:\Users\mclemens\Desktop\Mobile-App-MM\midimosaicmobileapp\src\pages\home\home.html"*/'<ion-content overflow-scroll="true">\n\n<ion-list padding>\n\n    <button ion-button block (click)="moveToDemoPage()">Move Pages</button>\n\n    <button ion-button block (click)="write()">Write</button>\n\n    <h2>{{dataSent}}</h2>\n\n    <button ion-button block (click)="read()">Read</button>\n\n    <h2>{{dataReceived}}</h2>\n\n    <h4>Address: {{address}}</h4>\n\n  <button ion-button block (click)="startScanning()">scan</button>\n\n  <ion-list-header>\n\n    Paired Devices\n\n  </ion-list-header>\n\n  <ion-item *ngFor="let device of pairedDevices">\n\n    {{device.name}}\n\n  </ion-item>\n\n  <button ion-button block (click)="disconnect()">Disconnect</button>\n\n  <ion-list-header>\n\n    Available Devices\n\n  </ion-list-header>\n\n  <ion-item *ngFor=\'let device of unpairedDevices\'>\n\n    <span (click)="selectDevice(device.address)">\n\n      {{device.name}}\n\n    </span>\n\n  </ion-item>\n\n  <ion-spinner name="crescent" *ngIf="gettingDevices"></ion-spinner>\n\n</ion-list>\n\n</ion-content>'/*ion-inline-end:"C:\Users\mclemens\Desktop\Mobile-App-MM\midimosaicmobileapp\src\pages\home\home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__ionic_native_bluetooth_serial__["a" /* BluetoothSerial */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_bluetooth_serial__["a" /* BluetoothSerial */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_bluetooth_serial__["a" /* BluetoothSerial */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _c || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=home.js.map
-
-/***/ }),
-
-/***/ 195:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ColorPickerPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_bluetooth_serial__ = __webpack_require__(77);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-/**
- * Generated class for the ColorPickerPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var ColorPickerPage = /** @class */ (function () {
-    function ColorPickerPage(bluetoothSerial, alertCtrl, navCtrl, navParams) {
-        this.bluetoothSerial = bluetoothSerial;
-        this.alertCtrl = alertCtrl;
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.dataSent = 'null';
-    }
-    ColorPickerPage.prototype.write = function () {
-        var _this = this;
-        this.bluetoothSerial.write('hello world').then(function () { _this.dataSent = 'yes'; }, function () { _this.dataSent = 'no'; });
-    };
-    ColorPickerPage.prototype.read = function () {
-        var _this = this;
-        this.dataReceived = this.bluetoothSerial.read().then(function (data) { _this.dataSent = data; }, function () { _this.dataSent = 'no'; });
-    };
-    ColorPickerPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad ColorPickerPage');
-    };
-    ColorPickerPage.prototype.disconnect = function () {
-        var _this = this;
-        var alert = this.alertCtrl.create({
-            title: 'Disconnect?',
-            message: 'Do you want to Disconnect?',
-            buttons: [
-                {
-                    text: 'Cancel',
-                    role: 'cancel',
-                    handler: function () {
-                        console.log('Cancel clicked');
-                    }
-                },
-                {
-                    text: 'Disconnect',
-                    handler: function () {
-                        _this.bluetoothSerial.disconnect();
-                    }
-                }
-            ]
-        });
-        alert.present();
-    };
-    ColorPickerPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-color-picker',template:/*ion-inline-start:"/Users/mclem/Desktop/MidiMosaicMobileApp/src/pages/color-picker/color-picker.html"*/'<!--\n  Generated template for the ColorPickerPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>color-picker</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <button ion-button block (click)="write()">Write</button>\n    <button ion-button block (click)="disconnect()">Disconnect</button>\n</ion-content>\n'/*ion-inline-end:"/Users/mclem/Desktop/MidiMosaicMobileApp/src/pages/color-picker/color-picker.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__ionic_native_bluetooth_serial__["a" /* BluetoothSerial */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
-    ], ColorPickerPage);
-    return ColorPickerPage;
-}());
-
-//# sourceMappingURL=color-picker.js.map
 
 /***/ }),
 
@@ -269,13 +285,13 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(192);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(194);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_bluetooth_serial__ = __webpack_require__(77);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(270);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home__ = __webpack_require__(195);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_common__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_color_picker_color_picker__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_color_picker_color_picker__ = __webpack_require__(101);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -299,21 +315,21 @@ var AppModule = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["I" /* NgModule */])({
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* MyApp */],
-                __WEBPACK_IMPORTED_MODULE_7__pages_home_home__["a" /* HomePage */], __WEBPACK_IMPORTED_MODULE_9__pages_color_picker_color_picker__["a" /* ColorPickerPage */]
+                __WEBPACK_IMPORTED_MODULE_7__pages_home_home__["a" /* HomePage */],
+                __WEBPACK_IMPORTED_MODULE_9__pages_color_picker_color_picker__["a" /* ColorPickerPage */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_8__angular_common__["b" /* CommonModule */],
                 __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["d" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* MyApp */], {}, {
-                    links: [
-                        { loadChildren: '../pages/color-picker/color-picker.module#ColorPickerPageModule', name: 'ColorPickerPage', segment: 'color-picker', priority: 'low', defaultHistory: [] }
-                    ]
+                    links: []
                 }),
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicApp */]],
             entryComponents: [
                 __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* MyApp */],
-                __WEBPACK_IMPORTED_MODULE_7__pages_home_home__["a" /* HomePage */]
+                __WEBPACK_IMPORTED_MODULE_7__pages_home_home__["a" /* HomePage */],
+                __WEBPACK_IMPORTED_MODULE_9__pages_color_picker_color_picker__["a" /* ColorPickerPage */]
             ],
             providers: [
                 __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */],
@@ -337,9 +353,9 @@ var AppModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(27);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(193);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(192);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(195);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -365,9 +381,9 @@ var MyApp = /** @class */ (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/mclem/Desktop/MidiMosaicMobileApp/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/mclem/Desktop/MidiMosaicMobileApp/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"C:\Users\mclemens\Desktop\Mobile-App-MM\midimosaicmobileapp\src\app\app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n\n'/*ion-inline-end:"C:\Users\mclemens\Desktop\Mobile-App-MM\midimosaicmobileapp\src\app\app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
     return MyApp;
 }());

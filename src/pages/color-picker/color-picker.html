@@ -7,13 +7,33 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>color-picker</ion-title>
+    <ion-title>ColorPicker</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-    <button ion-button block (click)="write()">Write</button>
-    <button ion-button block (click)="disconnect()">Disconnect</button>
+<ion-content>
+  <div class="color-blob" [ngStyle]="{backgroundColor: colorCombo}">
+    <div >
+        <button (click)="write()" ion-button full style="background: rgb(0,0,0,0); box-shadow: 0 0 0 #000000; -webkit-box-shadow: 0 0 0 #000000;">Full Button</button>
+    </div>
+  </div>
+  <div style="position: fixed;bottom: 8px;left:0px;right:0px;">
+      <ion-item>
+          <ion-label>Breadth of Control</ion-label>
+          <ion-select [(ngModel)]="controlOfLEDs">
+            <ion-option value="b">Box</ion-option>
+            <ion-option value="r">Row</ion-option>
+            <ion-option value="c">Column</ion-option>
+            <ion-option value="a">All</ion-option>
+          </ion-select>
+        </ion-item>
+        <div style="padding: 0px 15px;">
+            <ion-range min="0" max="255" (ionChange)="colorChanged($event)" [(ngModel)]="redValue" color="danger" pin="true"></ion-range>
+            <ion-range min="0" max="255" (ionChange)="colorChanged($event)" [(ngModel)]="greenValue" color="secondary" pin="true"></ion-range>
+            <ion-range min="0" max="255" (ionChange)="colorChanged($event)" [(ngModel)]="blueValue" color="primary" pin="true"></ion-range>
+            <button ion-button block [ngStyle]="{backgroundColor: colorCombo}">Send Color</button>
+        </div>
+  </div>
 </ion-content>

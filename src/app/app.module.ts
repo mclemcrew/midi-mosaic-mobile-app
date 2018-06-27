@@ -13,7 +13,8 @@ import { ColorPickerPage } from '../pages/color-picker/color-picker';
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,ColorPickerPage
+    HomePage,
+    ColorPickerPage
   ],
   imports: [
     BrowserModule,
@@ -23,7 +24,8 @@ import { ColorPickerPage } from '../pages/color-picker/color-picker';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    ColorPickerPage
   ],
   providers: [
     StatusBar,

@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
+import { NavController, NavParams } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
-
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 /**
  * Generated class for the ColorPickerPage page.
  *
@@ -10,47 +9,70 @@ import { AlertController } from 'ionic-angular';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-color-picker',
   templateUrl: 'color-picker.html',
 })
 export class ColorPickerPage {
 
-  dataSent = 'null';
-  dataReceived;
+  labelForNumberInput: string = "Box Number: "
+  controlOfLEDs: any = 'b';
+  colorCombo: string;
+  color: any = "255,0,0";
+  redValue: any = "255";
+  greenValue: any = "95";
+  blueValue: any = "0";
+  dataSent: any;
 
-  constructor(private bluetoothSerial: BluetoothSerial, private alertCtrl: AlertController,public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  write() {
-    this.bluetoothSerial.write('hello world').then(()=> {this.dataSent='yes'},()=> {this.dataSent='no'});
-  }
-
-  read() {
-    this.dataReceived = this.bluetoothSerial.read().then((data)=> {this.dataSent=data},()=> {this.dataSent='no'});
+  constructor(private bluetoothSerial: BluetoothSerial,private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams) {
+    //this.comboColor = this.redValue+","+this.greenValue+","+this.blueValue;
+    this.colorCombo = "rgb("+this.redValue+","+this.greenValue+"," + this.blueValue+")";
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ColorPickerPage');
   }
 
-  disconnect() {
+  colorChanged() {
+    this.colorCombo = "rgb("+this.redValue+","+this.greenValue+"," + this.blueValue+")";
+  }
+
+  write() {
+    this.bluetoothSerial.write('hello world').then(()=> {this.dataSent='yes'},()=> {this.dataSent='no'});
+  }
+
+  presentPrompt() {
     let alert = this.alertCtrl.create({
-      title: 'Disconnect?',
-      message: 'Do you want to Disconnect?',
+      title: 'Login',
+      inputs: [
+        {
+          name: 'username',
+          placeholder: 'Username'
+        },
+        {
+          name: 'password',
+          placeholder: 'Password',
+          type: 'password'
+        }
+      ],
       buttons: [
         {
           text: 'Cancel',
           role: 'cancel',
-          handler: () => {
+          handler: data => {
             console.log('Cancel clicked');
           }
         },
         {
-          text: 'Disconnect',
-          handler: () => {
-            this.bluetoothSerial.disconnect();
+          text: 'Save',
+          handler: data => {
+            if (true) {
+              // logged in!
+              console.log(true);
+            } else {
+              // invalid login
+              return false;
+            }
           }
         }
       ]
