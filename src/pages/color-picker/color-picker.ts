@@ -66,13 +66,6 @@ export class ColorPickerPage {
         {
           text: 'Save',
           handler: data => {
-            if (true) {
-              // logged in!
-              console.log(true);
-            } else {
-              // invalid login
-              return false;
-            }
           }
         }
       ]
