@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController,LoadingController } from 'ionic-angular';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 import { AlertController } from 'ionic-angular';
 import { ColorPickerPage } from '../color-picker/color-picker';
@@ -16,11 +16,14 @@ export class HomePage {
   dataSent = 'null';
   dataReceived;
   address: any;
-  constructor(private bluetoothSerial: BluetoothSerial, private alertCtrl: AlertController, private navController: NavController ) {
+  loadingMM: any;
+  loadingSearching: any;
+
+  constructor(public loadingCtrl: LoadingController,private bluetoothSerial: BluetoothSerial, private alertCtrl: AlertController, private navController: NavController ) {
     bluetoothSerial.enable();
   }
 
-  moveToDemoPage() {
+  navToColorPage() {
     this.navController.push(ColorPickerPage);
   }
 
@@ -33,6 +36,7 @@ export class HomePage {
   }
 
   startScanning() {
+    this.presentLoadingSearching();
     this.pairedDevices = null;
     this.unpairedDevices = null;
     this.gettingDevices = true;
@@ -41,20 +45,27 @@ export class HomePage {
       this.gettingDevices = false;
       success.forEach(element => {
         // alert(element.name);
+        this.loadingSearching.dismiss();
       });
     },
       (err) => {
         console.log(err);
+        this.loadingSearching.dismiss();
       })
 
     this.bluetoothSerial.list().then((success) => {
       this.pairedDevices = success;
     },
       (err) => {
-
       })
   }
-  success = (data) => alert(data);
+  
+  success = (data) => {
+    // alert(data);
+    this.loadingMM.dismiss();
+    this.navToColorPage();
+  }
+
   fail = (error) => alert(error);
 
   selectDevice(address: any) {
@@ -73,6 +84,7 @@ export class HomePage {
         {
           text: 'Connect',
           handler: () => {
+            this.presentLoadingMM();
             this.bluetoothSerial.connect(address).subscribe(this.success, this.fail);
           }
         }
@@ -104,4 +116,31 @@ export class HomePage {
     });
     alert.present();
   }
+
+  presentLoadingMM() {
+    this.loadingMM = this.loadingCtrl.create({
+      spinner: 'crescent',
+      content: 'Connecting to Midi Mosaic...'
+    });
+  
+    this.loadingMM.present();
+  
+    setTimeout(() => {
+      this.loadingMM.dismiss();
+    }, 5000);
+  }
+
+  presentLoadingSearching() {
+    this.loadingSearching = this.loadingCtrl.create({
+      spinner: 'crescent',
+      content: 'Searching for Devices...'
+    });
+  
+    this.loadingSearching.present();
+  
+    setTimeout(() => {
+      this.loadingSearching.dismiss();
+    }, 5000);
+  }
+
 }

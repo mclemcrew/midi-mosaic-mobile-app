@@ -1,9 +1,15 @@
 page-color-picker {
     .color-blob {
         width:100%;
-        height:50%;
+        height:43%;
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+    .send-color-button {
+        -webkit-transition-property: none;
+        -moz-transition-property: none;
+        -o-transition-property: none;
+        transition-property: none;
     }
 }

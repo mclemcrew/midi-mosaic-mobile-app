@@ -15,3 +15,11 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 $range-ios-knob-height: 500px;
+
+.range-md.range-has-pin {
+    padding: 5px;
+}
+
+.range-md {
+    padding: 8px;
+}
