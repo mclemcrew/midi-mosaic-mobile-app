@@ -6,14 +6,18 @@
     <!-- <button ion-button block (click)="read()">Read</button>
     <h2>{{dataReceived}}</h2>
     <h4>Address: {{address}}</h4> -->
-  <button ion-button block (click)="startScanning()">scan</button>
+    <div text-center>
+      <button ion-button round outline class="home-screen-button" color="orange" (click)="startScanning()">scan</button>
+    </div>
   <ion-list-header>
     Paired Devices
   </ion-list-header>
   <ion-item *ngFor="let device of pairedDevices">
     {{device.name}}
   </ion-item>
-  <button ion-button block (click)="disconnect()">Disconnect</button>
+  <div text-center>
+  <button ion-button round outline class="home-screen-button" color="orange" (click)="disconnect()">Disconnect</button>
+  </div>
   <ion-list-header>
     Available Devices
   </ion-list-header>

@@ -21,7 +21,7 @@
   </div>
   <div style="position: fixed;bottom: 8px;left:0px;right:0px;">
       <ion-item>
-          <ion-label>Breadth of Control</ion-label>
+          <ion-label class="color-label">Breadth of Control</ion-label>
           <ion-select (ionChange)="selectionChanged($event)" [(ngModel)]="controlOfLEDs">
             <ion-option value="b">Box</ion-option>
             <ion-option value="r">Row</ion-option>
@@ -31,13 +31,13 @@
         </ion-item>
         <div style="padding: 0px 15px;">
             <ion-range style="padding-top:25px" min="0" max="255" (ionChange)="colorChanged($event)" [(ngModel)]="redValue" color="danger" pin="true">
-              <ion-label range-left>Red</ion-label>
+              <ion-label class="color-label" range-left>Red</ion-label>
             </ion-range>
             <ion-range min="0" max="255" (ionChange)="colorChanged($event)" [(ngModel)]="greenValue" color="secondary" pin="true">
-              <ion-label range-left>Green</ion-label>
+              <ion-label class="color-label" range-left>Green</ion-label>
             </ion-range>
             <ion-range min="0" max="255" (ionChange)="colorChanged($event)" [(ngModel)]="blueValue" color="primary" pin="true">
-              <ion-label range-left>Blue</ion-label>
+              <ion-label class="color-label" range-left>Blue</ion-label>
             </ion-range>
             <button class="send-color-button" (click)="write()" ion-button block [ngStyle]="{backgroundColor: colorCombo}">Send Color</button>
         </div>

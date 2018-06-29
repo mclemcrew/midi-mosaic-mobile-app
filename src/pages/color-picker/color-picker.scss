@@ -12,4 +12,18 @@ page-color-picker {
         -o-transition-property: none;
         transition-property: none;
     }
+    .item-md, .item-ios {
+        background: #474747;
+        color: white;
+      }
+      .list-header-md,.list-header-ios {
+        border-top: 1px solid #474747;
+        // border-bottom: 1px solid #474747;
+      }
+      .item-md.item-block .item-inner {
+        border-bottom: 1px solid #474747;
+      }
+      .color-label {
+          color: white;
+      }
 }

@@ -28,7 +28,6 @@ export class ColorPickerPage {
   controlButtonName: any = "Click to change box #";
 
   constructor(private bluetoothSerial: BluetoothSerial,private alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams) {
-    //this.comboColor = this.redValue+","+this.greenValue+","+this.blueValue;
     this.colorCombo = "rgb("+this.redValue+","+this.greenValue+"," + this.blueValue+")";
   }
 

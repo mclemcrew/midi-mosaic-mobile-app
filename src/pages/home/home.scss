@@ -1,3 +1,9 @@
 page-home {
-   
+    .item-md, .item-ios {
+        background: #474747;
+        color: white;
+      }
+      .list-header-md,.list-header-ios {
+        border-top: 1px solid #474747;
+      }
 }
